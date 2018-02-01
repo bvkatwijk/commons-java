@@ -21,6 +21,7 @@ configurations {
 }
 
 dependencies {
+
 	provided 'org.projectlombok:lombok:1.16.6'
 
 	compile 'org.apache.commons:commons-lang3:3.4'
