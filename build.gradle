@@ -1,8 +1,21 @@
+buildscript {
+
+	repositories {
+		mavenCentral()
+	}
+
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'jacoco'
+
+
+group 'org.bvkatwijk.commons'
+description 'commons-java'
+version '0.0.1'
 
 sourceCompatibility = 1.8
-version = '1.0'
 
 jar {
 	manifest {
@@ -30,3 +43,17 @@ dependencies {
 	testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
 
 }
+
+test {
+	testLogging {
+		events "standardOut", "started", "passed", "skipped", "failed"
+	}
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+	}
+}
+
+check.dependsOn jacocoTestReport
